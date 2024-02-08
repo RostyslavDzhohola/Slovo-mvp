@@ -1,6 +1,6 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
-import { Contract } from "ethers";
+// import { Contract } from "ethers";
 
 /**
  * Deploys a contract named "YourContract" using the deployer account and
@@ -20,21 +20,23 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
     You can run the `yarn account` command to check your balance in every network.
   */
   const { deployer } = await hre.getNamedAccounts();
+  const owner = "0xf41123669f91b482626b198bd72f2A1E6E62fB5a";
+  const baseTokenURI = "https://gateway.pinata.cloud/ipfs/Qm";
   const { deploy } = hre.deployments;
 
-  await deploy("YourContract", {
+  await deploy("ComicBook", {
     from: deployer,
     // Contract constructor arguments
-    args: [deployer],
+    args: [owner, baseTokenURI],
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.
     autoMine: true,
   });
 
-  // Get the deployed contract to interact with it after deploying.
-  const yourContract = await hre.ethers.getContract<Contract>("YourContract", deployer);
-  console.log("👋 Initial greeting:", await yourContract.greeting());
+  // // Get the deployed contract to interact with it after deploying.
+  // const yourContract = await hre.ethers.getContract<Contract>("ComicBook", deployer);
+  // console.log("👋 Initial greeting:", await yourContract.greeting());
 };
 
 export default deployYourContract;
