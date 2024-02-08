@@ -24,3 +24,5 @@ export const useGlobalState = create<GlobalState>(set => ({
   targetNetwork: scaffoldConfig.targetNetworks[0],
   setTargetNetwork: (newTargetNetwork: ChainWithAttributes) => set(() => ({ targetNetwork: newTargetNetwork })),
 }));
+
+// I can add global state for storing NFT holders of the books
