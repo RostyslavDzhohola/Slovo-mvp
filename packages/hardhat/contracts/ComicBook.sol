@@ -12,19 +12,22 @@ contract ComicBook is ERC721, Ownable {
     string internal ipfsCid;
     bool private isBookIpfsCidSet = false;
 
+    event Minted(address indexed to, uint256 tokenId);
+
     constructor(
-      address owner,
-      string memory baseTokenURI
+        address owner,
+        string memory baseTokenURI
     ) ERC721("comicBook", "CB")
     { 
-      transferOwnership(owner);
-      _baseTokenURI = baseTokenURI;
+        transferOwnership(owner);
+        _baseTokenURI = baseTokenURI;
     }
 
-    function safeMint(address to) public {
+    function safeMint() public {
         uint256 tokenId = _nextTokenId++;
         require(tokenId < MAX_SUPPLY, "ComicBook: MAX_SUPPLY reached");
-        _safeMint(to, tokenId);
+        _safeMint(msg.sender, tokenId);
+        emit Minted(msg.sender, tokenId);
     }
 
     function setIpfsCid(string memory cid) public onlyOwner {
