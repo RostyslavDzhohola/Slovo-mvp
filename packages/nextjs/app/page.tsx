@@ -1,6 +1,7 @@
 "use client";
 
 // import Link from "next/link";
+import { useEffect } from "react";
 import type { NextPage } from "next";
 import litInstance from "~~/utils/custom/lit";
 
@@ -10,6 +11,10 @@ const Home: NextPage = () => {
   const connectToLit = async () => {
     await litInstance.connect();
   };
+
+  useEffect(() => {
+    litInstance.getAuthSig();
+  }, []);
 
   return (
     <>
