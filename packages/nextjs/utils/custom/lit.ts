@@ -13,10 +13,6 @@ class Lit {
     try {
       await litNodeClient.connect();
       console.log("Connected to Lit");
-      // const nonce = litNodeClient.getLatestBlockhash();
-      // console.log("GENERATED NONCE: ", nonce);
-      // const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: chain, nonce: nonce });
-      // console.log("Auth sig:", authSig);
     } catch (error) {
       console.error("Failed to connect to Lit:", error);
     }
@@ -27,6 +23,10 @@ class Lit {
     console.log("GENERATED NONCE: ", nonce);
     const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: chain, nonce: nonce });
     console.log("Auth sig:", authSig);
+  }
+
+  async encrypt() {
+    // const ipfsCid = await litNodeClient.encrypt()
   }
 }
 
