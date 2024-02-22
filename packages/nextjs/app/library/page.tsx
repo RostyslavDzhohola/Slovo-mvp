@@ -24,7 +24,9 @@ const Library: NextPage = () => {
           <div className="flex flex-col space-y-4">
             <Image src="/first_page_transparent.png" alt="Comic Book" width={300} height={500} />
             <span className="text-2xl mx-auto">{bookCount} comic books</span>
-            <button className="btn btn-primary w-32 mx-auto">Read</button>
+            <button className="btn btn-primary w-32 mx-auto" onClick={() => alert("reading book")}>
+              Read
+            </button>
           </div>
         ) : (
           <div>No Comic books</div>
