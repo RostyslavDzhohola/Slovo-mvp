@@ -112,11 +112,10 @@ class Lit {
         ipfsCid: ipfsCid,
         litNodeClient: client,
       });
-
       return decryptedFile;
     } catch (error) {
       console.error("Failed to decrypt:", error);
-      throw error; // This will re-throw the error, whether it's an instance of Error or not
+      throw error;
     }
   }
 }
