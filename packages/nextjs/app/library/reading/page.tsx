@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import "./Sample.css";
 import { useResizeObserver } from "@wojtekmaj/react-hooks";
+import type { NextPage } from "next";
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
@@ -20,9 +21,11 @@ const resizeObserverOptions = {};
 const maxWidth = 600;
 
 type PDFFile = string | File | null;
+interface ReadingProps {
+  file?: PDFFile;
+}
 
-export default function Sample() {
-  const [file, setFile] = useState<PDFFile>("/sample.pdf");
+const Reading: NextPage<ReadingProps> = ({ file }) => {
   const [numPages, setNumPages] = useState<number>();
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
   const [containerWidth, setContainerWidth] = useState<number>();
@@ -58,4 +61,6 @@ export default function Sample() {
       </div>
     </div>
   );
-}
+};
+
+export default Reading;
