@@ -1,9 +1,11 @@
 "use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
+import litInstance from "~~/utils/custom/lit";
 
 const Library: NextPage = () => {
   // Read the balanceOf for current address and if true show the comic book
@@ -17,6 +19,11 @@ const Library: NextPage = () => {
   const bookCount = Number(balanceOf);
 
   console.log("📚 balanceOf", balanceOf);
+
+  useEffect(() => {
+    litInstance.getAuthSig();
+  }, []);
+
   return (
     <>
       <div className="flex items-center flex-col flex-grow pt-10">
