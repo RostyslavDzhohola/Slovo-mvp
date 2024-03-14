@@ -18,14 +18,14 @@ const options = {
 
 const resizeObserverOptions = {};
 
-const maxWidth = 600;
+const maxWidth = 500;
 
 type PDFFile = string | File | null;
 interface ReadingProps {
   file?: PDFFile;
 }
 
-const Reading: NextPage<ReadingProps> = ({ file }) => {
+const Reading: NextPage<ReadingProps> = ({ file = "/sample.pdf" }) => {
   const [numPages, setNumPages] = useState<number>();
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
   const [containerWidth, setContainerWidth] = useState<number>();

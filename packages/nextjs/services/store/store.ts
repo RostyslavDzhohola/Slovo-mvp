@@ -16,6 +16,8 @@ type GlobalState = {
   setNativeCurrencyPrice: (newNativeCurrencyPriceState: number) => void;
   targetNetwork: ChainWithAttributes;
   setTargetNetwork: (newTargetNetwork: ChainWithAttributes) => void;
+  ipfsCid: string;
+  setIpfsCid: (newIpfsCid: string) => void;
 };
 
 export const useGlobalState = create<GlobalState>(set => ({
@@ -23,6 +25,8 @@ export const useGlobalState = create<GlobalState>(set => ({
   setNativeCurrencyPrice: (newValue: number): void => set(() => ({ nativeCurrencyPrice: newValue })),
   targetNetwork: scaffoldConfig.targetNetworks[0],
   setTargetNetwork: (newTargetNetwork: ChainWithAttributes) => set(() => ({ targetNetwork: newTargetNetwork })),
+  ipfsCid: "",
+  setIpfsCid: (newIpfsCid: string) => set(() => ({ ipfsCid: newIpfsCid })),
 }));
 
 // I can add global state for storing NFT holders of the books
